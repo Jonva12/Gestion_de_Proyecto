@@ -13,4 +13,8 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('inicio');
+
+Route::resource('proyecto', 'proyectoController');
+
+Route::resource('empleado', 'empleadosController');
