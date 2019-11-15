@@ -20,6 +20,9 @@ Route::get('/empleado/{id}', 'empleadosController@show')->name('empleado');
 //rutas proyectos
 Route::get('/proyectos', 'proyectoController@index')->name('proyectos');
 Route::get('/proyecto/{id}', 'proyectoController@show')->name('proyecto');
+//rutas departamentos
+Route::get('/departamentos', 'departamentosController@index')->name('departamentos');
+Route::get('/departamento/{id}', 'departamentosController@show')->name('departamento');
 //rutas resources
 Route::resource('proyecto', 'proyectoController');
 Route::resource('empleado', 'empleadosController');

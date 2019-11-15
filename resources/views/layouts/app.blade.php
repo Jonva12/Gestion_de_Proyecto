@@ -24,7 +24,7 @@
               <a class="nav-link" href="{{route('empleados')}}">Empleados <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">Departamentos <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{route('departamentos')}}">Departamentos <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="{{route('proyectos')}}">Proyectos <span class="sr-only">(current)</span></a>
