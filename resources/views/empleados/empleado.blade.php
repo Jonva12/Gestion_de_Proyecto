@@ -13,14 +13,12 @@
         <th>Email</th>
         <th>Telefono</th>
       </tr>
-      @foreach($empleados as $empleado)
       <tr>
-        <td><a href="{{route('empleado', $empleado->id)}}"> {{$empleado->id}}</a></td>
+        <td>{{$empleado->id}}</td>
         <td>{{$empleado->nombre}}</td>
         <td>{{$empleado->apellido}}</td>
         <td>{{$empleado->telefono}}</td>
       </tr>
-      @endforeach
     </table>
 
 @endsection

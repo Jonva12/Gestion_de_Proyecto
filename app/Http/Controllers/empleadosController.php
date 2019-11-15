@@ -45,9 +45,10 @@ class empleadosController extends Controller
      * @param  \App\Empleados  $empleados
      * @return \Illuminate\Http\Response
      */
-    public function show(Empleados $empleados)
+    public function show($id)
     {
-        //
+        $empleado = Empleados::where('id',$id)->first();
+        return view('empleados/empleado', ['empleado'=>$empleado]);
     }
 
     /**
