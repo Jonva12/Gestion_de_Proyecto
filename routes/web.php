@@ -14,8 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 })->name('inicio');
+//rutas empleados
 Route::get('/empleados', 'empleadosController@index')->name('empleados');
 Route::get('/empleado/{id}', 'empleadosController@show')->name('empleado');
+//rutas proyectos
+Route::get('/proyectos', 'proyectoController@index')->name('proyectos');
+Route::get('/proyecto/{id}', 'proyectoController@show')->name('proyecto');
+//rutas resources
 Route::resource('proyecto', 'proyectoController');
-
 Route::resource('empleado', 'empleadosController');

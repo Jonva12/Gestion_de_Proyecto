@@ -15,15 +15,15 @@
         <th>Fecha fin</th>
         <th>Horas estimadas</th>
       </tr>
-      @foreach($proyectos as $proyecto)
+
       <tr>
-        <td><a href="{{route('proyecto', $proyecto->id)}}">{{$proyecto->id}}</a></td>
+        <td>{{$proyecto->id}}</td>
         <td>{{$proyecto->nombre}}</td>
         <td>{{$proyecto->titulo}}</td>
         <td>{{$proyecto->fechainicio}}</td>
         <td>{{$proyecto->fechainfin}}</td>
         <td>{{$proyecto->horasestimadas}}</td>
       </tr>
-      @endforeach
     </table>
+
 @endsection

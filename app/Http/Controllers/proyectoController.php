@@ -47,7 +47,8 @@ class proyectoController extends Controller
      */
     public function show($id)
     {
-        //
+        $proyecto = Proyectos::where('id',$id)->first();
+        return view('proyectos/proyecto', ['proyecto'=>$proyecto]);
     }
 
     /**

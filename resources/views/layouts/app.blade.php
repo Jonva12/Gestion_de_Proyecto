@@ -27,7 +27,7 @@
               <a class="nav-link" href="#">Departamentos <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">Proyectos <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{route('proyectos')}}">Proyectos <span class="sr-only">(current)</span></a>
             </li>
           </ul>
         </div>
