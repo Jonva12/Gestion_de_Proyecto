@@ -14,6 +14,7 @@
         <th>Fecha Inicio</th>
         <th>Fecha fin</th>
         <th>Horas estimadas</th>
+        <th>Responsable</th>
       </tr>
       @foreach($proyectos as $proyecto)
       <tr>
@@ -23,7 +24,11 @@
         <td>{{$proyecto->fechainicio}}</td>
         <td>{{$proyecto->fechainfin}}</td>
         <td>{{$proyecto->horasestimadas}}</td>
-      </tr>
-      @endforeach
+        @if(!is_null($proyecto->empleado))
+          <td><a href="/empleado/{{$proyecto->empleado->id}}">{{$proyecto->empleado->nombre}}</td>
+        @else
+          </tr>
+        @endif
+        @endforeach
     </table>
 @endsection

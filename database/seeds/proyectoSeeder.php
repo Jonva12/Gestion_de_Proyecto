@@ -24,7 +24,8 @@ class proyectoSeeder extends Seeder
                 'titulo' => Str::random(20),
                 'fechainicio' => $fechainicio,
                 'fechafin'  => $fechafin,
-                'horasestimadas' => rand(500,3000)
+                'horasestimadas' => rand(500,3000),
+                'responsable' => rand(1,10)
             ]);
         }
     }

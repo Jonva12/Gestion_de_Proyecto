@@ -15,7 +15,7 @@ class proyectoController extends Controller
     public function index()
     {
         $proyectos = Proyectos::all();
-        return view('proyectos/index', ['proyectos'=>$proyectos]);
+        return view('proyectos/index', array('proyectos'=>$proyectos));
     }
 
     /**
