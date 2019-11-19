@@ -14,6 +14,7 @@
         <th>Fecha Inicio</th>
         <th>Fecha fin</th>
         <th>Horas estimadas</th>
+        <th>Responsable</th>
       </tr>
 
       <tr>
@@ -23,6 +24,11 @@
         <td>{{$proyecto->fechainicio}}</td>
         <td>{{$proyecto->fechainfin}}</td>
         <td>{{$proyecto->horasestimadas}}</td>
+        @if(!is_null($proyecto->empleado))
+          <td><a href="/empleado/{{$proyecto->empleado->id}}">{{$proyecto->empleado->nombre}}</a></td>
+        @else
+          </tr>
+        @endif
       </tr>
     </table>
 
