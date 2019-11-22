@@ -5,7 +5,7 @@
 @section('content')
 
   <h2>Proyectos</h2>
-
+    <button id="crear"><a href="{{route('proyecto.create')}}">Añadir proyecto</a></button>
     <table>
       <tr>
         <th>Id</th>

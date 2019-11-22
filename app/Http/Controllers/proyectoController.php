@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Proyectos;
+use App\Empleados;
+use Carbon\Carbon;
 
 class proyectoController extends Controller
 {
@@ -25,7 +27,8 @@ class proyectoController extends Controller
      */
     public function create()
     {
-        //
+        $empleados = Empleados::all();
+        return view('proyectos/createProyecto', array('empleados'=>$empleados));
     }
 
     /**
@@ -36,7 +39,21 @@ class proyectoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $proyecto = new Proyectos();
+
+        $proyecto->nombre = $request->input('nombre');
+        $proyecto->titulo = $request->input('titulo');
+        $proyecto->fechainicio = Carbon::createFromFormat( 'Y-m-d', $request->input('fechaI'));
+        $proyecto->fechafin = Carbon::createFromFormat( 'Y-m-d', $request->input('fechaF'));
+        //$proyecto->fechafin = Carbon::parse($request->input('fechaF'));
+        $proyecto->horasestimadas = $request->input('horasE');
+        //$proyecto->responsable = $request->get('res');
+
+        $proyecto->save();
+
+        $proyectos = Proyectos::all();
+        return view('proyectos/index', array('proyectos'=>$proyectos));
+
     }
 
     /**
