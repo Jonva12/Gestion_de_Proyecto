@@ -10,6 +10,6 @@ class Proyectos extends Model
 
    public function empleado()
     {
-        return $this->belongsTo('App\Empleados', 'id');
+        return $this->belongsTo('App\Empleados', 'responsable');
     }
 }

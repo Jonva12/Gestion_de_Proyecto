@@ -10,6 +10,6 @@ class Empleados extends Model
 
     public function proyecto()
     {
-        return $this->hasOne('App\Proyectos', 'id');
+        return $this->hasOne('App\Proyectos', 'responsable');
     }
 }

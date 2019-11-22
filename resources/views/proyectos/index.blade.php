@@ -25,7 +25,7 @@
         <td>{{$proyecto->fechainfin}}</td>
         <td>{{$proyecto->horasestimadas}}</td>
         @if(!is_null($proyecto->empleado))
-          <td><a href="/empleado/{{$proyecto->empleado->id}}">{{$proyecto->empleado->nombre}}</td>
+          <td><a href="{{route('empleado', $proyecto->empleado->id)}}">{{$proyecto->empleado->nombre}}</td>
         @else
           </tr>
         @endif
