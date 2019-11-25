@@ -15,20 +15,25 @@
         <th>Fecha fin</th>
         <th>Horas estimadas</th>
         <th>Responsable</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
       </tr>
       @foreach($proyectos as $proyecto)
       <tr>
-        <td><a href="{{route('proyecto', $proyecto->id)}}">{{$proyecto->id}}</a></td>
+        <td><a href="{{route('proyecto.show', $proyecto->id)}}">{{$proyecto->id}}</a></td>
         <td>{{$proyecto->nombre}}</td>
         <td>{{$proyecto->titulo}}</td>
         <td>{{$proyecto->fechainicio}}</td>
-        <td>{{$proyecto->fechainfin}}</td>
+        <td>{{$proyecto->fechafin}}</td>
         <td>{{$proyecto->horasestimadas}}</td>
         @if(!is_null($proyecto->empleado))
           <td><a href="{{route('empleado', $proyecto->empleado->id)}}">{{$proyecto->empleado->nombre}}</td>
         @else
-          </tr>
+        </tr>
         @endif
+          <td><a href="{{route('proyecto.edit', $proyecto->id)}}">Editar</a></td>
+          <td><a href="{{route('proyecto.destroy', $proyecto->id)}}">Eliminar</a></td>
+        </tr>
         @endforeach
     </table>
 @endsection

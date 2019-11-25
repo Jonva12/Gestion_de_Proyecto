@@ -43,11 +43,10 @@ class proyectoController extends Controller
 
         $proyecto->nombre = $request->input('nombre');
         $proyecto->titulo = $request->input('titulo');
-        $proyecto->fechainicio = Carbon::createFromFormat( 'Y-m-d', $request->input('fechaI'));
-        $proyecto->fechafin = Carbon::createFromFormat( 'Y-m-d', $request->input('fechaF'));
-        //$proyecto->fechafin = Carbon::parse($request->input('fechaF'));
+        $proyecto->fechainicio = $request->input('fechaI');
+        $proyecto->fechafin = $request->input('fechaF');
         $proyecto->horasestimadas = $request->input('horasE');
-        //$proyecto->responsable = $request->get('res');
+        $proyecto->responsable = $request->get('res');
 
         $proyecto->save();
 
@@ -76,7 +75,9 @@ class proyectoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proyecto = Proyectos::where('id', $id)->first();
+        $empleados = Empleados::all();
+        return view('proyectos/editProyecto', array('proyecto'=>$proyecto), array('empleados'=>$empleados));
     }
 
     /**
@@ -88,7 +89,19 @@ class proyectoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $proyecto = Proyectos::where('id',$id)->first();
+
+        $proyecto->nombre = $request->input('nombre');
+        $proyecto->titulo = $request->input('titulo');
+        $proyecto->fechainicio = $request->input('fechaI');
+        $proyecto->fechafin = $request->input('fechaF');
+        $proyecto->horasestimadas = $request->input('horasE');
+        $proyecto->responsable = $request->get('res');
+
+        $proyecto->save();
+
+        $proyectos = Proyectos::all();
+        return view('proyectos/index', array('proyectos'=>$proyectos));
     }
 
     /**
@@ -99,6 +112,10 @@ class proyectoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $proyecto = Proyectos::where('id',$id)->first();
+        $proyecto->delete();
+
+        $proyectos = Proyectos::all();
+        return view('proyectos/index', ['proyectos'=>$proyectos]);
     }
 }

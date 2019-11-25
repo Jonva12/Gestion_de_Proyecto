@@ -18,10 +18,13 @@ Route::get('/', function () {
 Route::get('/empleados', 'empleadosController@index')->name('empleados');
 Route::get('/empleado/{id}', 'empleadosController@show')->name('empleado');
 //rutas proyectos
-Route::get('/proyectos', 'proyectoController@index')->name('proyectos');
-route::get('/proyecto/create', 'proyectoController@create')->name('proyecto.create');
-route::post('/proyecto/store', 'proyectoController@store')->name('proyecto.store');
-Route::get('/proyecto/{id}', 'proyectoController@show')->name('proyecto');
+Route::get('proyecto', 'proyectoController@index')->name('proyecto.index');
+Route::get('/proyecto/create', 'proyectoController@create')->name('proyecto.create');
+Route::post('proyecto', 'proyectoController@store')->name('proyecto.store');
+Route::get('/proyecto/{id}', 'proyectoController@show')->name('proyecto.show');
+Route::get('/proyecto/{id}/edit', 'proyectoController@edit')->name('proyecto.edit');
+Route::put('/proyecto/{id}', 'proyectoController@update')->name('proyecto.update');
+Route::get('/proyecto/{id}', 'proyectoController@destroy')->name('proyecto.destroy');
 //rutas departamentos
 Route::get('/departamentos', 'departamentosController@index')->name('departamentos');
 Route::get('/departamento/{id}', 'departamentosController@show')->name('departamento');
