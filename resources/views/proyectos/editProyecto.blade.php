@@ -8,7 +8,6 @@
     <form method="post" action="{{route('proyecto.update', $proyecto->id)}}">
       @csrf
       @method('PUT')
-      Nombre: <input type="text" name="nombre" value="{{$proyecto->nombre}}"><br>
       Titulo: <input type="text" name="titulo" value="{{$proyecto->titulo}}"><br>
       Fecha inicio: <input type="date" name="fechaI" value="{{$proyecto->fechainicio}}"><br>
       Fecha fin: <input type="date" name="fechaF" value="{{$proyecto->fechafin}}"><br>
