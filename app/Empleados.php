@@ -12,4 +12,9 @@ class Empleados extends Model
     {
         return $this->hasOne('App\Proyectos', 'responsable');
     }
+
+    public function departamento()
+    {
+        return $this->belongsTo('App\Departamentos');
+    }
 }

@@ -5,7 +5,21 @@
 @section('content')
 
   <h2>Departamentos</h2>
-    <p>ID: {{$departamento->id}}</p>
-    <p>Nombre: {{$departamento->nombre}}</p>
+    <table>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Empleados</th>
+    </tr>
+    <tr>
+      <td>{{$departamento->id}}</td>
+      <td>{{$departamento->nombre}}</td>
+    	@if($departamento->empleados)
+    		@foreach($departamento->empleados as $empleado)
+        		<td><a href="{{route('empleado', $empleado->id)}}">{{$empleado->nombre}}</a></td>
+        	@endforeach
+        @endif
+    </tr>
+  </table>
 
 @endsection
