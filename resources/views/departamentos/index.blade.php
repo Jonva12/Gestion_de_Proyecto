@@ -11,12 +11,12 @@
       <th>Id</th>
       <th>Nombre</th>
     </tr>
-
+    @foreach($departamentos as $departamento)
     <tr>
-      <td>Aqui el id</td>
-      <td>Aqui el nombre</td>
+      <td><a href="{{route('departamento', $departamento->id)}}">{{$departamento->id}}</a></td>
+      <td>{{$departamento->nombre}}</td>
     </tr>
-
+    @endforeach
   </table>
 
 @endsection

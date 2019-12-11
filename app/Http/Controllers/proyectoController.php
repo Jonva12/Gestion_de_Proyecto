@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Proyectos;
+use App\Empleados;
+use Carbon\Carbon;
 
 class proyectoController extends Controller
 {
@@ -15,7 +17,7 @@ class proyectoController extends Controller
     public function index()
     {
         $proyectos = Proyectos::all();
-        return view('proyectos/index', ['proyectos'=>$proyectos]);
+        return view('proyectos/index', array('proyectos'=>$proyectos));
     }
 
     /**
@@ -25,7 +27,8 @@ class proyectoController extends Controller
      */
     public function create()
     {
-        //
+        $empleados = Empleados::all();
+        return view('proyectos/createProyecto', array('empleados'=>$empleados));
     }
 
     /**
@@ -36,7 +39,28 @@ class proyectoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre'=>'string|required|min:3|max:50',
+            'titulo'=>'string|min:2|max:50|required',
+            'fechaI'=>'date|required',
+            'fechaF'=>'date|required|after_or_equal_:fechaI',
+            'horasE'=>'numeric|required'
+        ]);
+
+        $proyecto = new Proyectos();
+
+        $proyecto->nombre = $request->input('nombre');
+        $proyecto->titulo = $request->input('titulo');
+        $proyecto->fechainicio = $request->input('fechaI');
+        $proyecto->fechafin = $request->input('fechaF');
+        $proyecto->horasestimadas = $request->input('horasE');
+        $proyecto->responsable = $request->get('res');
+
+        $proyecto->save();
+
+        $proyectos = Proyectos::all();
+        return view('proyectos/index', array('proyectos'=>$proyectos));
+
     }
 
     /**
@@ -48,7 +72,7 @@ class proyectoController extends Controller
     public function show($id)
     {
         $proyecto = Proyectos::where('id',$id)->first();
-        return view('proyectos/proyecto', ['proyecto'=>$proyecto]);
+        return view('proyectos/proyecto', array('proyecto'=>$proyecto));
     }
 
     /**
@@ -59,7 +83,9 @@ class proyectoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proyecto = Proyectos::where('id', $id)->first();
+        $empleados = Empleados::all();
+        return view('proyectos/editProyecto', array('proyecto'=>$proyecto), array('empleados'=>$empleados));
     }
 
     /**
@@ -71,7 +97,25 @@ class proyectoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'titulo'=>'string|min:2|max:50|required',
+            'fechaI'=>'date|required',
+            'fechaF'=>'date|required|after_or_equal_:fechaI',
+            'horasE'=>'numeric|required'
+        ]);
+
+        $proyecto = Proyectos::where('id',$id)->first();
+
+        $proyecto->titulo = $request->input('titulo');
+        $proyecto->fechainicio = $request->input('fechaI');
+        $proyecto->fechafin = $request->input('fechaF');
+        $proyecto->horasestimadas = $request->input('horasE');
+        $proyecto->responsable = $request->get('res');
+
+        $proyecto->save();
+
+        $proyectos = Proyectos::all();
+        return view('proyectos/index', array('proyectos'=>$proyectos));
     }
 
     /**
@@ -82,6 +126,10 @@ class proyectoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $proyectoDelete = Proyectos::where('id',$id)->first();
+        $proyectoDelete->delete();
+
+        $proyectos = Proyectos::all();
+        return redirect(route('proyecto.index', array('proyectos'=>$proyectos)));
     }
 }
