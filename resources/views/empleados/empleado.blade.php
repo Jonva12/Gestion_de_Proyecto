@@ -11,6 +11,9 @@
     <p>Email: {{$empleado->email}}</p>
     <p>Telefono: {{$empleado->telefono}}</p>
     @if(!is_null($empleado->departamento_id))
+      <p>Jefe del Departamento: <a href="{{route('departamento', $empleado->jefeDe->id)}}">{{$empleado->jefeDe->nombre}}</a></p>
+    @endif
+    @if(!is_null($empleado->departamento_id))
       <p>Departamento: <a href="{{route('departamento', $empleado->departamento_id)}}">{{$empleado->departamento->nombre}}</a></p>
     @endif
     @if(!is_null($empleado->proyecto))

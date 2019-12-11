@@ -23,4 +23,9 @@ class Empleados extends Model
     {
         return $this->belongsToMany('App\Proyectos');
     }
+
+    public function jefeDe()
+    {
+        return $this->hasOne('App\Departamentos', 'jefe_id');
+    }
 }
