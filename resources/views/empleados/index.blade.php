@@ -27,7 +27,7 @@
         <td></td>
         @endif
         @if(!is_null($empleado->departamento_id))
-        <td><a href="">{{$empleado->departamento->nombre}}</a></td>
+        <td><a href="{{route('departamento', $empleado->departamento_id)}}">{{$empleado->departamento->nombre}}</a></td>
         @else
         <td></td>
         @endif
