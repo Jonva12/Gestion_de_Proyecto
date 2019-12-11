@@ -39,6 +39,15 @@ class proyectoController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'nombre'=>'string|required|min:3|max:50',
+            'titulo'=>'string|required|min:3|max:50',
+            'fechaI'=>'date|required',
+            'fechaF'=>'date|required',
+            'horasE'=>'number|required',
+            'res'=>'number|nullable'
+        ]);
+
         $proyecto = new Proyectos();
 
         $proyecto->nombre = $request->input('nombre');
@@ -89,6 +98,15 @@ class proyectoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'nombre'=>'string|required|min:3|max:50',
+            'titulo'=>'string|required|min:3|max:50',
+            'fechaI'=>'date|required',
+            'fechaF'=>'date|required',
+            'horasE'=>'numeric|required',
+            'res'=>'numeric|required'
+        ]);
+
         $proyecto = Proyectos::where('id',$id)->first();
 
         $proyecto->nombre = $request->input('nombre');
