@@ -32,7 +32,13 @@
           <td></td>
         @endif
           <td><a href="{{route('proyecto.edit', $proyecto->id)}}">Editar</a></td>
-          <td><a href="{{route('proyecto.destroy', $proyecto->id)}}">Eliminar</a></td>
+          <td>
+            <form action="{{route('proyecto.destroy', $proyecto->id)}}" method="post">
+              @method('DELETE')
+              @csrf
+              <input type="submit" value="Eliminar">
+            </form>
+          </td>
         </tr>
         @endforeach
     </table>

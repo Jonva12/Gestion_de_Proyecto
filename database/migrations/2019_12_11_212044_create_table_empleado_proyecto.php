@@ -13,8 +13,12 @@ class CreateTableEmpleadoProyecto extends Migration
      */
     public function up()
     {
-        Schema::create('table_empleado_proyecto', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('empleados_proyectos', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('empleados_id');
+            $table->integer('proyectos_id');
+            $table->date('fechainicio');
+            $table->date('fechafin');          
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateTableEmpleadoProyecto extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_empleado_proyecto');
+        Schema::dropIfExists('empleados_proyectos');
     }
 }

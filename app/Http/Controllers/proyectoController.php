@@ -72,7 +72,7 @@ class proyectoController extends Controller
     public function show($id)
     {
         $proyecto = Proyectos::where('id',$id)->first();
-        return view('proyectos/proyecto', ['proyecto'=>$proyecto]);
+        return view('proyectos/proyecto', array('proyecto'=>$proyecto));
     }
 
     /**
@@ -126,10 +126,10 @@ class proyectoController extends Controller
      */
     public function destroy($id)
     {
-        $proyecto = Proyectos::where('id',$id)->first();
-        $proyecto->delete();
+        $proyectoDelete = Proyectos::where('id',$id)->first();
+        $proyectoDelete->delete();
 
         $proyectos = Proyectos::all();
-        return view('proyectos/index', ['proyectos'=>$proyectos]);
+        return redirect(route('proyecto.index', array('proyectos'=>$proyectos)));
     }
 }

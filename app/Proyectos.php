@@ -12,4 +12,9 @@ class Proyectos extends Model
     {
         return $this->belongsTo('App\Empleados', 'responsable');
     }
+
+    public function empleados()
+    {
+        return $this->belongsToMany('App\Empleados')->withpivot('fechainicio','fechafin');
+    }
 }

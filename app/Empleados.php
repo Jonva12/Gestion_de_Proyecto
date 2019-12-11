@@ -18,4 +18,9 @@ class Empleados extends Model
     {
         return $this->belongsTo('App\Departamentos');
     }
+
+    public function proyectos()
+    {
+        return $this->belongsToMany('App\Proyectos');
+    }
 }

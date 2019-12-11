@@ -14,5 +14,7 @@
         @if(!is_null($proyecto->empleado))
           <p>Responsable: <a href="/empleado/{{$proyecto->empleado->id}}">{{$proyecto->empleado->nombre}}</a></p>
         @endif
-
+        @foreach($proyecto->empleados as $pe)
+        <li>Nombre: <a href="/empleado/{{$pe->id}}">{{$pe->nombre}}</a> Fecha Inicio: {{$pe->pivot->fechainicio}} Fecha Fin: {{$pe->pivot->fechafin}}</li>
+    @endforeach
 @endsection

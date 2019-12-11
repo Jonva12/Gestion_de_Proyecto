@@ -14,7 +14,7 @@ class AddDepartamentoIdToEmpleadosTable extends Migration
     public function up()
     {
         Schema::table('empleados', function (Blueprint $table) {
-            $table->integer('departamento_id')->after('telefono');
+            $table->integer('departamento_id')->after('telefono')->nullable();
         });
     }
 
