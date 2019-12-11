@@ -29,7 +29,7 @@
         @if(!is_null($proyecto->empleado))
           <td><a href="{{route('empleado', $proyecto->empleado->id)}}">{{$proyecto->empleado->nombre}}</td>
         @else
-        </tr>
+          <td></td>
         @endif
           <td><a href="{{route('proyecto.edit', $proyecto->id)}}">Editar</a></td>
           <td><a href="{{route('proyecto.destroy', $proyecto->id)}}">Eliminar</a></td>

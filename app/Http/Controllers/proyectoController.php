@@ -45,7 +45,6 @@ class proyectoController extends Controller
             'fechaI'=>'date|required',
             'fechaF'=>'date|required|after_or_equal_:fechaI',
             'horasE'=>'numeric|required'
-
         ]);
 
         $proyecto = new Proyectos();
@@ -103,7 +102,6 @@ class proyectoController extends Controller
             'fechaI'=>'date|required',
             'fechaF'=>'date|required|after_or_equal_:fechaI',
             'horasE'=>'numeric|required'
-
         ]);
 
         $proyecto = Proyectos::where('id',$id)->first();
